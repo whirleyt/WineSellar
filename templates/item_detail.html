@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div style="display:none;" id="itemRating" data-rating="{{ item.rating }}"></div>
+
+<div class="detail-container">
+    <div class="padding-top">
+        <h1 class="wine-seller wine-title">Wine Seller</h1>
+        {% if item.color == 'red' %}
+        <img class="wine" src="/static/images/wine-red.png" alt="Red Wine">
+        {% elif item.color == 'white' %}
+        <img class="wine" src="/static/images/wine-white.png" alt="White Wine">
+        {% endif %}
+    </div>
+    <a href="{{ url_for('edit_item', item_id=item.id) }}" class="edit-button light-grey">Edit</a>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="section-container">
+            <div class="body">
+                <div class="info">
+                    <div class="detail-title home-title text-center">
+                        <h4 class="wine-seller wine-title margin">{{ item.title }}</h4>
+                        <p class="black"><i>{{ item.winemaker}}, {{item.vintage}}</i></p>
+                    </div>
+                    <img class="detail-img" alt="Photo of {{ item.title }}" src={{item.image_url}}>
+                    <div>
+                        <p class="bold black">{{item.region}}
+                            <span id="starRating" class="info-purple"></span>
+                        </p>
+                    </div>
+                    <div class="detail-description">
+                        <p>{{ item.description }}</p>
+                    </div>
+                    <div class="info-purple detail-description">
+                        <p>Body: {{ item.body }} <span class="black bold"> | </span>
+                        <span>Tannin: {{ item.tannin }} <span class="black bold"> | </span></span>
+                        <span>Acid: {{ item.acid }}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="section-container padding-top-bottom">
+            <div class="section-side">
+                <div class="section-title">
+                    <h6 class="bold">Tasting Notes</h6>
+                    <ul>
+                        {% for note in item.tasting_notes %}
+                        <li>{{ note }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                </div>
+            </div>
+        <div class="section-container">
+            <div class="section-side">
+                <div class="section-title">
+                    <h6 class="bold">Other Regions With the Same Grape</h6>
+                    <ul class="region-list">
+                        {% for region in item.other_regions %}
+                        <li><a href="/search?query={{region}}">{{ region }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+</div>
+
+{% endblock %}

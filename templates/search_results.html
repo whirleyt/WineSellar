@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="section-container text-center">
+                <div class="home-title">
+                    <h1 class="wine-seller">Wine Seller</h1>
+                </div>
+                <div class="padding-top">
+                <h5 class="light-grey">Showing {{ items|length }} result{{ 's' if items|length != 1 else '' }} for "{{ query }}"</h5>
+                {% if items %}
+                <div class="list-group">
+                    {% for item in items %}
+                    <a href="/view/{{item.id}}" class="list-group-item list-group-item-action">
+                        <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                            <div class="media-body order-2 order-lg-1">
+                                <h5 class="black bold wine-title">{{item.title}}</h5>
+                                {% if item.color == 'red' %}
+                                <img class="wine" src="/static/images/wine-red.png" alt="Red Wine">
+                                {% elif item.color == 'white' %}
+                                <img class="wine" src="/static/images/wine-white.png" alt="White Wine">
+                                {% endif %}
+                                <p class="light-grey"><i>{{item.winemaker}}, {{item.vintage}}</i></p>
+                                <h9 class="bold">Tasting Notes</h9>
+                                <ul>
+                                    {% for note in item.tasting_notes %}
+                                    <span class="note">{{ note }}{{ ',' if not loop.last }}</span>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <img src="{{item.image_url}}" alt="Photo of {{item.title}}" width="200" class="ml-lg-5 order-1 order-lg-2">
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p>No results found.</p>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="section-container">
+                <div class="section-side home-margin-top">
+                    <div>
+                        <h6 class="section-title">Highest Rated Wines This Week</h6>
+                        <div id="popular-items" class="popular-items-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="section-container">
+                <div class="home-title">
+                    <h1 class="wine-seller">Wine Seller</h1>
+                </div>
+                <div class="body">
+                    <div class="info">
+                        <img class="info-img" src="/static/images/wine1.jpeg" alt="photo of three wine glasses">
+                        <div class="info-paragraph">
+                            <h8>
+                                Welcome to <span class="info-purple">Wine Seller</span>, your premier gateway to exploring
+                                the rich tapestry of global wines from the comfort of your home. Through our expertly
+                                crafted interface, users can indulge in detailed explorations of robust California reds, crisp whites
+                                from New Zealand, France's legendary varieties, and many more. Our site is a celebration of wine culture, offering
+                                rich narratives about each bottle, the legacy of their regions, and the mastery behind their creation.
+                                Whether you're deepening your existing passion or just beginning to explore the nuanced world of wines,
+                                Wine Seller offers an educational, engaging, and enlightening experience. Immerse yourself in our
+                                curated content and let Wine Seller be your guide to a world where every discovery is an opportunity to
+                                celebrate and learn about the sublime craftsmanship of winemaking.
+                            </h8>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="col-md-3">
+                <div class="section-container">
+                    <div class="section-side home-margin-top">
+                        <h6 class="section-title">Regions We Carry</h6>
+                        <p class="light-grey">Select Below to Search</p>
+                        <div class="region-list">
+                        <li><a href="/search?query=California">California</a></li>
+                        <li><a href="/search?query=Oregon">Oregon</a></li>
+                        <li><a href="/search?query=France">France</a></li>
+                        <li><a href="/search?query=Argentina">Argentina</a></li>
+                        <li><a href="/search?query=New Zealand">New Zealand</a></li>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+    </div>
+{% endblock %}
